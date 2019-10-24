@@ -2,7 +2,7 @@ FROM centos:latest
 WORKDIR /config
 ENV LC_ALL=en_US.UTF-8 \
     GUAC_VER=1.0.0 \
-    TOMCAT_VER=9.0.26
+    TOMCAT_VER=9.0.27
 
 ARG Required_dependencies="\
             cairo-devel \
@@ -12,8 +12,7 @@ ARG Required_dependencies="\
             "
 ARG Optional_dependencies="\
             ffmpeg-devel \
-            freerdp-devel \
-            freerdp-plugins \
+            freerdp1.2-devel \
             pango-devel \
             libssh2-devel \
             libtelnet-devel \
@@ -87,6 +86,7 @@ RUN chmod +x ./entrypoint.sh
 
 ENV JUMPSERVER_KEY_DIR=/config/guacamole/keys \
     GUACAMOLE_HOME=/config/guacamole \
+    JUMPSERVER_CLEAR_DRIVE_SESSION=true \
     JUMPSERVER_ENABLE_DRIVE=true
 
 ENTRYPOINT [ "./entrypoint.sh" ]
