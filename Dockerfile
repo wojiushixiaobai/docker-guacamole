@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7
 WORKDIR /config
 ENV LC_ALL=en_US.UTF-8 \
     GUAC_VER=1.0.0 \
@@ -13,15 +13,11 @@ ARG Required_dependencies="\
 ARG Optional_dependencies="\
             ffmpeg-devel \
             freerdp1.2-devel \
-            pango-devel \
-            libssh2-devel \
-            libtelnet-devel \
             libvncserver-devel \
             pulseaudio-libs-devel \
             openssl-devel \
             libvorbis-devel \
             libwebp-devel \
-            ghostscript \
             "
 
 RUN set -ex \
@@ -45,7 +41,6 @@ RUN set -ex \
     && mv apache-tomcat-${TOMCAT_VER} tomcat9 \
     && rm -rf apache-tomcat-${TOMCAT_VER}.tar.gz \
     && rm -rf tomcat9/webapps/* \
-    && sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml \
     && sed -i 's/level = FINE/level = OFF/g' /config/tomcat9/conf/logging.properties \
     && sed -i 's/level = INFO/level = OFF/g' /config/tomcat9/conf/logging.properties \
     && sed -i 's@CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out@CATALINA_OUT=/dev/null@g' /config/tomcat9/bin/catalina.sh \
