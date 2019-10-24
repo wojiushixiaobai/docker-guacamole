@@ -11,7 +11,7 @@ This container runs the guacamole web client, the guacd server for jumpserver.
 
 ```shell
 docker run \
-  -p 8081:8081 \
+  -p 8081:8080 \
   -e JUMPSERVER_SERVER=http://<jumpserver>:8080 \
   jumpserver/guacamole
 ```
