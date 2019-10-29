@@ -81,6 +81,7 @@ RUN chmod +x ./entrypoint.sh
 
 ENV JUMPSERVER_KEY_DIR=/config/guacamole/keys \
     GUACAMOLE_HOME=/config/guacamole \
+    GUACAMOLE_LOG_LEVEL=ERROR \
     JUMPSERVER_CLEAR_DRIVE_SESSION=true \
     JUMPSERVER_ENABLE_DRIVE=true
 
