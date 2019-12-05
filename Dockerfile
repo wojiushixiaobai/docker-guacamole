@@ -2,7 +2,7 @@ FROM centos:7
 WORKDIR /config
 ENV LC_ALL=en_US.UTF-8 \
     GUAC_VER=1.0.0 \
-    TOMCAT_VER=9.0.27
+    TOMCAT_VER=9.0.29
 
 ARG Required_dependencies="\
             cairo-devel \
